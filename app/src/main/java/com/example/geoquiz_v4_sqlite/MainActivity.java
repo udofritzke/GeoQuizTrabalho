@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// GitHub: https://github.com/udofritzke/QuizzTrabalho
+
 public class MainActivity extends AppCompatActivity {
     private Button mBotaoVerdadeiro;
     private Button mBotaoFalso;
