@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     QuestaoDB mQuestoesDb;
+    RespostaDB mRespostaDB;
 
     private int mIndiceAtual = 0;
 
@@ -67,8 +68,11 @@ public class MainActivity extends AppCompatActivity {
                         acertou(true),
                         true,
                         mEhColador
-                        );
-                // CONTINUAR DAQUI...
+                );
+                if (mRespostaDB == null) {
+                    mRespostaDB = new RespostaDB(getBaseContext());
+                }
+                mRespostaDB.addResposta(r);
             }
         });
 
@@ -76,9 +80,19 @@ public class MainActivity extends AppCompatActivity {
         mBotaoFalso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 verificaResposta(false);
                 // cadastro da resposta no banco ...
+                //UUID id, boolean respostaCorreta, boolean respostaApresentada, boolean colou
+
+                Resposta r = new Resposta(mBancoDeQuestoes[mIndiceAtual].getId(),
+                        acertou(false),
+                        false,
+                        mEhColador
+                );
+                if (mRespostaDB == null) {
+                    mRespostaDB = new RespostaDB(getBaseContext());
+                }
+                mRespostaDB.addResposta(r);
             }
         });
         mBotaoProximo = (Button) findViewById(R.id.botao_proximo);
@@ -104,13 +118,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         mBotaoCadastra = (Button) findViewById(R.id.botao_cadastra);
         mBotaoCadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                  Acesso ao SQLite
-                */
+
+                //  Acesso ao SQLite
+
                 if (mQuestoesDb == null) {
                     mQuestoesDb = new QuestaoDB(getBaseContext());
                 }
@@ -119,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 mQuestoesDb.addQuestao(mBancoDeQuestoes[indice++]);
             }
         });
+*/
 
         //Cursor cur = mQuestoesDb.queryQuestao ("_id = ?", val);////(null, null);
         //String [] val = {"1"};
@@ -197,7 +213,8 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(this, idMensagemResposta, Toast.LENGTH_SHORT).show();
     }
-    private boolean acertou(boolean respostaPressionada){
+
+    private boolean acertou(boolean respostaPressionada) {
         boolean respostaCorreta = mBancoDeQuestoes[mIndiceAtual].isRespostaCorreta();
         return respostaPressionada == respostaCorreta;
     }
