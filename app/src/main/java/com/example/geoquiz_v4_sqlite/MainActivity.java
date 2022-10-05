@@ -58,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 verificaResposta(true);
+                // cadastro da resposta no banco ...
+                //UUID id, boolean respostaCorreta, boolean respostaApresentada, boolean colou
+
+                Resposta r = new Resposta(mBancoDeQuestoes[mIndiceAtual].getId(),
+                        acertou(true),
+                        true,
+                        mEhColador
+                        );
+                // CONTINUAR DAQUI...
             }
         });
 
@@ -65,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         mBotaoFalso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 verificaResposta(false);
+                // cadastro da resposta no banco ...
             }
         });
         mBotaoProximo = (Button) findViewById(R.id.botao_proximo);
@@ -183,6 +194,10 @@ public class MainActivity extends AppCompatActivity {
                 idMensagemResposta = R.string.toast_incorreto;
         }
         Toast.makeText(this, idMensagemResposta, Toast.LENGTH_SHORT).show();
+    }
+    private boolean acertou(boolean respostaPressionada){
+        boolean respostaCorreta = mBancoDeQuestoes[mIndiceAtual].isRespostaCorreta();
+        return respostaPressionada == respostaCorreta;
     }
 
     @Override
