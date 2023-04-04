@@ -52,20 +52,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/botao_mostra_questoes"
-            android:layout_width="wrap_content"
+            android:id="@+id/botao_deleta"
+            android:layout_width="203dp"
             android:layout_height="wrap_content"
-            android:text="Mostra" />
+            android:text="Deleta Questões" />
 
         <Button
-            android:id="@+id/botao_deleta"
-            android:layout_width="match_parent"
+            android:id="@+id/botao_cadastra_questoes"
+            android:layout_width="236dp"
             android:layout_height="wrap_content"
-            android:text="Deleta" />
+            android:text="Cadastra Questões" />
     </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/botao_mostra_questoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mostra Questões" />
 
     <ScrollView
         android:layout_width="wrap_content"

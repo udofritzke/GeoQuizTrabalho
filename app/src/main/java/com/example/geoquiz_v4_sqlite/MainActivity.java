@@ -12,7 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-// GitHub: https://github.com/udofritzke/QuizzTrabalho
+// Versão de solução da atividade baseada no projeto GeoQuiz_v4_SQLite (https://github.com/udofritzke/GeoQuiz)
+// Este código está no GitHub: https://github.com/udofritzke/QuizzTrabalho
 
 public class MainActivity extends AppCompatActivity {
     private Button mBotaoVerdadeiro;
@@ -118,8 +119,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        mBotaoCadastra = (Button) findViewById(R.id.botao_cadastra);
+        mBotaoCadastra = (Button) findViewById(R.id.botao_cadastra_questoes);
         mBotaoCadastra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,10 +134,7 @@ public class MainActivity extends AppCompatActivity {
                 mQuestoesDb.addQuestao(mBancoDeQuestoes[indice++]);
             }
         });
-*/
 
-        //Cursor cur = mQuestoesDb.queryQuestao ("_id = ?", val);////(null, null);
-        //String [] val = {"1"};
         mBotaoMostra = (Button) findViewById(R.id.botao_mostra_questoes);
         mBotaoMostra.setOnClickListener(new View.OnClickListener() {
             @Override
